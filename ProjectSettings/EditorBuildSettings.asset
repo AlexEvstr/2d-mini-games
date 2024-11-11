@@ -6,6 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/GameResource/Scenes/Loading.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/GameResource/Scenes/MainMenu.unity
+    guid: 4e83194e529bc410cbfef4f2b7c19dfb
+  - enabled: 1
+    path: Assets/GameResource/Scenes/SlotMachine.unity
+    guid: d5973990fab9c4fd28481e7c33c65b65
+  - enabled: 1
+    path: Assets/GameResource/Scenes/ClawMachine.unity
+    guid: 938b9159448644542b5d6f0ab1f04747
+  - enabled: 1
+    path: Assets/GameResource/Scenes/CoinDrop.unity
+    guid: e17fa771dbb514520a7a2abf4c09f866
+  - enabled: 1
+    path: Assets/GameResource/Scenes/HitRreward.unity
+    guid: 9ac7619da4d404c22970a42aff37e038
+  - enabled: 1
+    path: Assets/GameResource/Scenes/LuckyWheel.unity
+    guid: 481878f44bd88451cb3f227083ad8918
+  - enabled: 1
+    path: Assets/GameResource/Scenes/TreasureHunt.unity
+    guid: 34812143cc46b43e89f5d3753273f79a
   m_configObjects: {}
