@@ -21,12 +21,9 @@ EditorBuildSettings:
     path: Assets/GameResource/Scenes/CoinDrop.unity
     guid: e17fa771dbb514520a7a2abf4c09f866
   - enabled: 1
-    path: Assets/GameResource/Scenes/HitRreward.unity
+    path: Assets/GameResource/Scenes/HitReward.unity
     guid: 9ac7619da4d404c22970a42aff37e038
   - enabled: 1
     path: Assets/GameResource/Scenes/LuckyWheel.unity
     guid: 481878f44bd88451cb3f227083ad8918
-  - enabled: 1
-    path: Assets/GameResource/Scenes/TreasureHunt.unity
-    guid: 34812143cc46b43e89f5d3753273f79a
   m_configObjects: {}
