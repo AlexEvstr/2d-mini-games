@@ -189,7 +189,7 @@ namespace SlotMachine
 
         private void RewardTableSettings()
         {
-            rewardTablePanel.SetActive(true);
+            //rewardTablePanel.SetActive(true);
 
             for (int i = 0; i < SlotTypes.Length; i++)
             {
