@@ -75,8 +75,8 @@ namespace SlotMachine
         public ParticleSystem confetiEffect;
         public Texture rewardTextureGold, rewardTextureDiamond; //Confetti effect icon changes acording to result reward currency.
 
-        private string coinString = "totalCoin";
-        private string diamondString = "totalDiamond";
+        private string coinString = "totalGold";
+        private string diamondString = "totalGem1";
 
         private int currentCoin;                 // Total coins amount. In your project it can be set up from PlayerProgress, DataController or from PlayerPrefs.
         private int previousCoin;                // For coin animation

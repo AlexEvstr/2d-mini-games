@@ -61,7 +61,7 @@ namespace ClawMachine
 
         [Header("UI Elements")]
         [Space]
-        //public Text pullCostText;
+        public Text pullCostText;
         public Text totalGoldText, totalEnergyText, totalGem1Text, totalGem2Text, totalGem3Text, totalGem4Text, totalLifeText, totalStarText;            // Pop-up text with spet or rewarded coins amount
 
         [Header("Effect Settings")]
@@ -103,7 +103,7 @@ namespace ClawMachine
             if (_ins == null)
                 _ins = this;
 
-            //pullCostText.text = pullCost.ToString();
+            pullCostText.text = pullCost.ToString();
             GetPlayerProgress();
         }
 

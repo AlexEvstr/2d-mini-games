@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 namespace HitReward
 {
     public class UIProfileController : MonoBehaviour
@@ -23,18 +22,15 @@ namespace HitReward
             public GameObject UIElement;
         }
         public MultiDimensional[] UIProfileElements;
-
         private void Start()
         {
             SetActiveElements();
         }
-
         private void SetActiveElements()
         {
             for (int i = 0; i < GameController.ins.Rewards.Length; i++)
             {
                 GameController.RewardEnum collectedRewardType = GameController.ins.Rewards[i].rewardCategory;
-
                 switch (collectedRewardType)
                 {
                     case GameController.RewardEnum.Gold:
@@ -83,8 +79,6 @@ namespace HitReward
                 }
             }
         }
-
-
         private void FindThatElement(RewardEnum type)
         {
             for (int i = 0; i < UIProfileElements.Length; i++)
