@@ -83,7 +83,7 @@ namespace DropGame
         private string gem4String = "totalGem4";
         private string moneyString = "totalMoney";
 
-        private Vector3 coinStartPosition = new Vector3(0, 780, 0);
+        private Vector3 coinStartPosition = new Vector3(0, 650, 0);
         private GameObject coinObject;
 
         public int CollectedRewardIndex
@@ -180,7 +180,8 @@ namespace DropGame
         private void ClaimDropCost()
         {
             previousGold = totalGold;
-            totalGold -= dropCost;  // Decrease money for the droping coin
+            totalGold -= dropCost;
+            previousGold = totalGold;
             totalGoldText.text = totalGold.ToString();
 
         }
