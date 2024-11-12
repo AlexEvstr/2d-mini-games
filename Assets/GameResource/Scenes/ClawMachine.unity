@@ -759,6 +759,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 5680969105359515679, guid: 4c1f43dc78a13490eb3aea31827bad7d, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e0ccdea01761d46279496cc356acd340, type: 3}
     - target: {fileID: 7228947999242027574, guid: 4c1f43dc78a13490eb3aea31827bad7d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

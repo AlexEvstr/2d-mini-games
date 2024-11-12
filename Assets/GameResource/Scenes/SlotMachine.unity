@@ -2118,6 +2118,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 526ff0262019941eeba44a3904ce324d, type: 3}
+    - target: {fileID: 3839746054938311462, guid: 5955d27ff6ed74376b8dd87bf86e8d6f, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e0ccdea01761d46279496cc356acd340, type: 3}
     - target: {fileID: 3839746054938311463, guid: 5955d27ff6ed74376b8dd87bf86e8d6f, type: 3}
       propertyPath: m_SizeDelta.x
       value: 750
