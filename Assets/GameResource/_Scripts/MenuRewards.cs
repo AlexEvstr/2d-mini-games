@@ -107,10 +107,10 @@ public class MenuRewards : MonoBehaviour
             PlayerPrefs.SetInt(gem4String, totalGem4);
         }
 
-        //totalGem1 = 600;
-        //totalGem2 = 600;
-        //totalGem3 = 600;
-        //totalGem4 = 600;
+        totalGem1 = 600;
+        totalGem2 = 600;
+        totalGem3 = 600;
+        totalGem4 = 600;
 
         PlayerPrefs.Save();
         StartCoroutine(UpdateRewardsAmount());
