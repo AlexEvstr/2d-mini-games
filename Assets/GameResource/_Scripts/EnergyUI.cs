@@ -36,6 +36,8 @@ public class EnergyUI : MonoBehaviour
     {
         if (currentEnergy == energySprites.Length - 1)
         {
+            Debug.Log(currentEnergy);
+            Debug.Log(energySprites.Length - 1);
             fullEnergyObject.SetActive(true);
             timerText.gameObject.SetActive(false);
             //energyImage.gameObject.SetActive(false);

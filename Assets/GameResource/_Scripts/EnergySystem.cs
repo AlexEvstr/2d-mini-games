@@ -11,7 +11,7 @@ public class EnergySystem : MonoBehaviour
     private DateTime lastEnergyTime;
     private float timer;
 
-    private void Start()
+    private void OnEnable()
     {
         LoadEnergyState();
         InitializeEnergy();
@@ -30,10 +30,10 @@ public class EnergySystem : MonoBehaviour
             int energyToAdd = (int)(timePassed.TotalMinutes / energyCooldownMinutes);
             currentEnergy = Mathf.Min(currentEnergy + energyToAdd, maxEnergy);
             float timerSaved = PlayerPrefs.GetFloat("Timer", energyCooldownMinutes * 60);
-            float timerdiff = 60 - timerSaved;
+            float timerdiff = energyCooldownMinutes * 60 - timerSaved;
             timer = Mathf.Clamp(energyCooldownMinutes * 60 - (float)timePassed.TotalSeconds % (energyCooldownMinutes * 60), 0, energyCooldownMinutes * 60);
             timer -= timerdiff;
-            if (timer < 0) timer = 60;
+            if (timer <= 0) timer = 0;
             Debug.Log("Timer-2: " + timer);
             SaveEnergyState();
         }
@@ -67,16 +67,16 @@ public class EnergySystem : MonoBehaviour
         if (currentEnergy > 0)
         {
             currentEnergy--;
-            
 
+            //Debug.Log(currentEnergy);
             // Устанавливаем таймер только если он не активен
-            if (currentEnergy == maxEnergy)
+            if (currentEnergy == maxEnergy-1)
             {
                 timer = energyCooldownMinutes * 60;
             }
 
-            onEnergyUpdated?.Invoke(currentEnergy, timer);
             SaveEnergyState();
+            onEnergyUpdated?.Invoke(currentEnergy, timer);
         }
     }
 
