@@ -473,7 +473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3661116198715635267, guid: 4c1f43dc78a13490eb3aea31827bad7d, type: 3}
       propertyPath: pullCost
-      value: 25
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3661116198715635267, guid: 4c1f43dc78a13490eb3aea31827bad7d, type: 3}
       propertyPath: pullCostText

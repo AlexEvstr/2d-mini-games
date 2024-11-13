@@ -10,6 +10,7 @@ public class EnergyUI : MonoBehaviour
     public GameObject fullEnergyObject;
     public TMP_Text timerText;
     public Sprite[] energySprites;
+    [SerializeField] private TMP_Text _energyTextMenu;
 
     private EnergySystem energySystem;
 
@@ -24,7 +25,7 @@ public class EnergyUI : MonoBehaviour
 
             // Инициализируем UI сразу после загрузки состояния
             UpdateEnergyUI(energySystem.GetCurrentEnergy(), energySystem.GetRemainingTime());
-
+            _energyTextMenu.text = energySystem.GetCurrentEnergy().ToString();
             // Останавливаем предыдущую корутину (если была), чтобы избежать сброса
             StopCoroutine(UpdateTimerCoroutine());
             StartCoroutine(UpdateTimerCoroutine());
@@ -36,8 +37,6 @@ public class EnergyUI : MonoBehaviour
     {
         if (currentEnergy == energySprites.Length - 1)
         {
-            Debug.Log(currentEnergy);
-            Debug.Log(energySprites.Length - 1);
             fullEnergyObject.SetActive(true);
             timerText.gameObject.SetActive(false);
             //energyImage.gameObject.SetActive(false);

@@ -6,7 +6,6 @@ using System.Collections;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _coinsText;
     [SerializeField] private RectTransform _settingsPanel;
     private Vector2 initialPosition;
     private EnergySystem _energySystem;
@@ -16,7 +15,6 @@ public class MenuManager : MonoBehaviour
     {
         initialPosition = _settingsPanel.anchoredPosition;
         _energySystem = GetComponent<EnergySystem>();
-        _coinsText.text = PlayerPrefs.GetInt("TotalCoinsAmount", 0).ToString();
     }
 
     public void OpenSlotMachineGame()
@@ -68,27 +66,21 @@ public class MenuManager : MonoBehaviour
 
     private void StartMoving(Vector2 destination)
     {
-        // Останавливаем любую текущую корутину, если она запущена
         if (moveCoroutine != null)
             StopCoroutine(moveCoroutine);
 
-        // Запускаем новую корутину для перемещения
         moveCoroutine = StartCoroutine(MoveToPosition(destination));
     }
 
-    // Корутина для линейного перемещения
     private IEnumerator MoveToPosition(Vector2 destination)
     {
         while (Vector2.Distance(_settingsPanel.anchoredPosition, destination) > 10f)
         {
-            // Вычисляем направление и линейное перемещение
             Vector2 direction = (destination - _settingsPanel.anchoredPosition).normalized;
             _settingsPanel.anchoredPosition += direction * 5000 * Time.deltaTime;
 
-            yield return null; // Ждем следующий кадр
+            yield return null;
         }
-
-        // Устанавливаем точную позицию в конце, чтобы избежать небольших отклонений
         _settingsPanel.anchoredPosition = destination;
     }
 }

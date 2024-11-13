@@ -832,6 +832,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1443276012061399737, guid: 80fd526e5ce49419e8795020c2bcb48f, type: 3}
+      propertyPath: turnCost
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443276012061399737, guid: 80fd526e5ce49419e8795020c2bcb48f, type: 3}
       propertyPath: CustomBackgrounds.Array.size
       value: 8
       objectReference: {fileID: 0}

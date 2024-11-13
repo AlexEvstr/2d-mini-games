@@ -32,7 +32,7 @@ public class MenuRewards : MonoBehaviour
         }
         else
         {
-            totalGold = 100; //Default Gold Value
+            totalGold = 99; //Default Gold Value
             PlayerPrefs.SetInt(goldString, totalGold);
             PlayerPrefs.Save();
         }

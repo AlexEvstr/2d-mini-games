@@ -971,6 +971,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4255404594878003829, guid: 0edec94ccbba34e608187273066254ce, type: 3}
+      propertyPath: playCost
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255404594878003829, guid: 0edec94ccbba34e608187273066254ce, type: 3}
       propertyPath: CustomBackgrounds.Array.size
       value: 8
       objectReference: {fileID: 0}
