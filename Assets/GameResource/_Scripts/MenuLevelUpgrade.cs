@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +11,8 @@ public class MenuLevelUpgrade : MonoBehaviour
     private int totalGem4;
     public Text totalGem1Text, totalGem2Text, totalGem3Text, totalGem4Text;
 
+    private AudioMenu _audioMenu;
+
 
     private void Start()
     {
@@ -24,6 +23,8 @@ public class MenuLevelUpgrade : MonoBehaviour
         totalGem2 = PlayerPrefs.GetInt("totalGem2", 0);
         totalGem3 = PlayerPrefs.GetInt("totalGem3", 0);
         totalGem4 = PlayerPrefs.GetInt("totalGem4", 0);
+
+        _audioMenu = GetComponent<AudioMenu>();
     }
 
     public void UpgradeFrom1To2Lvl()
@@ -37,6 +38,12 @@ public class MenuLevelUpgrade : MonoBehaviour
             _levels[1].SetActive(true);
             totalGem1Text.text = totalGem1.ToString();
             PlayerPrefs.SetInt("totalGem1", totalGem1);
+
+            _audioMenu.PlayBuySound();
+        }
+        else
+        {
+            _audioMenu.PlayDeclineSound();
         }
     }
 
@@ -51,6 +58,12 @@ public class MenuLevelUpgrade : MonoBehaviour
             _levels[2].SetActive(true);
             totalGem2Text.text = totalGem2.ToString();
             PlayerPrefs.SetInt("totalGem2", totalGem2);
+
+            _audioMenu.PlayBuySound();
+        }
+        else
+        {
+            _audioMenu.PlayDeclineSound();
         }
     }
 
@@ -65,6 +78,12 @@ public class MenuLevelUpgrade : MonoBehaviour
             _levels[3].SetActive(true);
             totalGem3Text.text = totalGem3.ToString();
             PlayerPrefs.SetInt("totalGem3", totalGem3);
+
+            _audioMenu.PlayBuySound();
+        }
+        else
+        {
+            _audioMenu.PlayDeclineSound();
         }
         
     }
@@ -80,6 +99,12 @@ public class MenuLevelUpgrade : MonoBehaviour
             _levels[4].SetActive(true);
             totalGem4Text.text = totalGem4.ToString();
             PlayerPrefs.SetInt("totalGem4", totalGem4);
+
+            _audioMenu.PlayBuySound();
+        }
+        else
+        {
+            _audioMenu.PlayDeclineSound();
         }
     }
 }

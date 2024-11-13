@@ -7,7 +7,7 @@ namespace SlotMachine
     public class Column : MonoBehaviour
     {
         public Image[] rowImages;
-
+        public AudioGame _audioGame;
         public int currentSlot;
         public int minShiftCount, maxShiftCount;
 
@@ -75,6 +75,7 @@ namespace SlotMachine
 
             currentSlot = -Mathf.RoundToInt(transform.localPosition.y / yValuePerRow);
             columnStopped = true;
+            _audioGame.PlayPopSound();
         }
     }
 }

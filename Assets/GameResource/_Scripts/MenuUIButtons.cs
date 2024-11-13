@@ -21,9 +21,13 @@ public class MenuUIButtons : MonoBehaviour
     private int totalGold;
     [SerializeField] private Text _totalGoldText;
 
+    private AudioMenu _audioMenu;
+
 
     private void Start()
     {
+        _audioMenu = GetComponent<AudioMenu>();
+
         if (PlayerPrefs.GetString("ClawGameStatus", "") == "")
         {
             _playClaw.SetActive(false);
@@ -62,6 +66,12 @@ public class MenuUIButtons : MonoBehaviour
             _buyClaw.SetActive(false);
             _playClaw.SetActive(true);
             PlayerPrefs.SetString("ClawGameStatus", "purchased");
+
+            _audioMenu.PlayBuySound();
+        }
+        else
+        {
+            _audioMenu.PlayDeclineSound();
         }
     }
 
@@ -76,7 +86,13 @@ public class MenuUIButtons : MonoBehaviour
             _buyCoin.SetActive(false);
             _playCoin.SetActive(true);
             PlayerPrefs.SetString("CoinGameStatus", "purchased");
-        } 
+
+            _audioMenu.PlayBuySound();
+        }
+        else
+        {
+            _audioMenu.PlayDeclineSound();
+        }
     }
 
     public void BuyHit()
@@ -90,6 +106,12 @@ public class MenuUIButtons : MonoBehaviour
             _buyHit.SetActive(false);
             _playHit.SetActive(true);
             PlayerPrefs.SetString("HitGameStatus", "purchased");
+
+            _audioMenu.PlayBuySound();
+        }
+        else
+        {
+            _audioMenu.PlayDeclineSound();
         }
     }
 
@@ -104,6 +126,12 @@ public class MenuUIButtons : MonoBehaviour
             _buyWheel.SetActive(false);
             _playWheel.SetActive(true);
             PlayerPrefs.SetString("WheelGameStatus", "purchased");
+
+            _audioMenu.PlayBuySound();
+        }
+        else
+        {
+            _audioMenu.PlayDeclineSound();
         }
     }
 }

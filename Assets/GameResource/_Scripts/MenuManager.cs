@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
-using UnityEngine.UI;
 using System.Collections;
 
 public class MenuManager : MonoBehaviour
@@ -11,8 +9,11 @@ public class MenuManager : MonoBehaviour
     private EnergySystem _energySystem;
     private Coroutine moveCoroutine;
 
+    private AudioMenu _audioMenu;
+
     private void Start()
     {
+        _audioMenu = GetComponent<AudioMenu>();
         initialPosition = _settingsPanel.anchoredPosition;
         _energySystem = GetComponent<EnergySystem>();
     }
@@ -49,9 +50,17 @@ public class MenuManager : MonoBehaviour
 
     private IEnumerator OpenGameScene(string SceneName)
     {
-        _energySystem.UseEnergy();
-        yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene(SceneName);
+        if (_energySystem.GetCurrentEnergy() > 0)
+        {
+            _energySystem.UseEnergy();
+            _audioMenu.PlayClickSound();
+            yield return new WaitForSeconds(0.5f);
+            SceneManager.LoadScene(SceneName);
+        }
+        else
+        {
+            _audioMenu.PlayDeclineSound();
+        }
     }
 
     public void OpenSettings()
@@ -60,12 +69,13 @@ public class MenuManager : MonoBehaviour
     }
 
     public void CloseSettings()
-    {
+    {   
         StartMoving(initialPosition);
     }
 
     private void StartMoving(Vector2 destination)
     {
+        _audioMenu.PlayClickSound();
         if (moveCoroutine != null)
             StopCoroutine(moveCoroutine);
 

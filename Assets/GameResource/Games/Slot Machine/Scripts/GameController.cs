@@ -58,7 +58,8 @@ namespace SlotMachine
         [Header("Reward Popup Panel Inputs")]
         [Space]
         public Transform popupPanel;
-        public Sprite rewardIconGold, rewardIconDiamond; //According to your reward categories sprites should change to show as reward result at popup panel.At popup panel this sprite uses as show what is reward
+        public Sprite rewardIconGold, rewardIconDiamond;
+        private AudioGame _audioGame;
 
         [Header("UI Elements")]
         [Space]
@@ -120,6 +121,8 @@ namespace SlotMachine
 
             if (showRewardListTable)
                 RewardTableSettings();
+
+            _audioGame = GetComponent<AudioGame>();
         }
 
         #region PlayerProgress
@@ -259,6 +262,7 @@ namespace SlotMachine
                 {
                     currentCoin -= pullCost;                    // Claim pull cost
                     StartCoroutine(UpdatePlayerProgress());
+                    _audioGame.PlaySpinSound();
 
                     gameStarted = true;
 
@@ -310,6 +314,8 @@ namespace SlotMachine
 
             rewardTextPopup.text = SlotTypes[rewardIndex].rewardValue.ToString();
             popupPanel.gameObject.SetActive(true);
+            _audioGame.PlayWinSound();
+
 
             //If player clicks "Claim", give that reward Call ClaimReward() function OR if player selects "x2 Button", then show rewarded ad and then give double reward Call DoubleReward() function
         }
@@ -340,6 +346,7 @@ namespace SlotMachine
 
             confetiEffect.Play();
             popupPanel.gameObject.SetActive(false);
+            _audioGame.PlayClickSound();
 
             //Add Rewards
             GiveReward();
