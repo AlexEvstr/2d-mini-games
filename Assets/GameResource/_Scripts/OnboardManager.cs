@@ -18,6 +18,12 @@ public class OnboardManager : MonoBehaviour
         }
     }
 
+    public void Open1Onboard()
+    {
+        _onboardWindow.SetActive(true);
+        _onboards[0].SetActive(true);
+    }
+
     public void Open2OnBoard()
     {
         _onboards[0].SetActive(false);
