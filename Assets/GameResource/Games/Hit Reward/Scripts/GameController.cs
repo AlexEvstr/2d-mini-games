@@ -76,6 +76,7 @@ namespace HitReward
         public ParticleSystem confetiEffect;
         public Material confetiCurrency;
         public GameObject WheelTable;
+        private AudioGame _audioGame;
         private Animator animationHit;
 
         private GameObject knife;
@@ -108,7 +109,7 @@ namespace HitReward
             turnCostText.text = playCost.ToString();
 
             animationHit = WheelTable.GetComponent<Animator>();
-
+            _audioGame = GetComponent<AudioGame>();
             GetPlayerProgress();
             CreateWheel();
         }
@@ -136,7 +137,7 @@ namespace HitReward
         {
             turnWheel = true;
             turningSpeed = 330;
-
+    
             while (turnWheel)
             {
                 wheelParent.transform.Rotate(0, 0, turningSpeed * Time.deltaTime); //Rotates as turningSpeed degrees per second around z axis
@@ -158,10 +159,12 @@ namespace HitReward
             {
                 ClaimDropCost();
                 knife.GetComponent<Knife>().HitTarget();
+                _audioGame.PlayPopSound();
             }
             else
             {
                 Debug.LogWarning("Player does not have enough gold. Here you should open the shop for in app purchase.");
+                _audioGame.PlayDeclineSound();
             }
         }
 
@@ -175,6 +178,7 @@ namespace HitReward
 
         public void PlayHitAnim ()
         {
+            
             animationHit.SetBool("isKnifeHit",true);
         }
 
@@ -212,6 +216,7 @@ namespace HitReward
             rewardImagePopup.sprite = Rewards[rewardIndex].rewardIcon;
             rewardTextPopup.text = Rewards[rewardIndex].rewardAmount.ToString();
             popupPanel.gameObject.SetActive(true);
+            _audioGame.PlayWinSound();
 
             StopCoroutine(TurnRoutine());
 
@@ -283,7 +288,8 @@ namespace HitReward
             }
 
             rewardMultiplier = 1;           //Reset for next rewards
-            hitButton.interactable = true;  //Now player can play again
+            hitButton.interactable = true;
+            _audioGame.PlayClickSound();
             StartCoroutine(UpdateRewardAmount());
             ResetGame();
         }

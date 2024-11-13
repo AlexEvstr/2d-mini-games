@@ -80,6 +80,7 @@ namespace FortuneWheel
         [Space]
         public ParticleSystem confetiEffect;
         public Material confetiCurrency;
+        private AudioGame _audioGame;
 
         private float[] sectorsAngles = new float[] { -90, -135, -180, -225, -270, -315, -360, -45 };//{ -45, -90, -135, -180, -225, -270, -315, -360 }; // Fill the necessary angles (for example if you want to have 12 sectors you need to fill the angles with 30 degrees step) Here angles for 8 sectors
         private float startAngle = 0;
@@ -119,6 +120,7 @@ namespace FortuneWheel
 
             GetPlayerProgress();
             CreateWheel();
+            _audioGame = GetComponent<AudioGame>();
         }
 
         public void CreateWheel()
@@ -140,7 +142,7 @@ namespace FortuneWheel
         public void TurnWheel()
         {
             turnButton.interactable = false;
-
+            
             if (totalGold >= turnCost) // If player has enough gold to turn the wheel
             {
                 ClaimTurnCost();
@@ -174,10 +176,12 @@ namespace FortuneWheel
                 finalAngle = -(fullCircles * 360 - randomFinalAngle);
                 isStarted = true;
                 StartCoroutine(TurnRoutine());
+                _audioGame.PlaySpinSound();
             }
             else
             {
                 Debug.LogWarning("Player does not have enough gold. Here you should open the shop for in app purchase.");
+                _audioGame.PlayDeclineSound();
             }
         }
 
@@ -280,6 +284,8 @@ namespace FortuneWheel
                     Debug.Log("There is no reward for this angle, please check angles");
                     break;
             }
+
+            
         }
 
         IEnumerator RewardPopup(int rewardIndex)
@@ -288,6 +294,7 @@ namespace FortuneWheel
             rewardImagePopup.sprite = PiecesOfWheel[rewardIndex].rewardIcon;
             rewardTextPopup.text = PiecesOfWheel[rewardIndex].rewardAmount.ToString();
             popupPanel.gameObject.SetActive(true);
+            _audioGame.PlayWinSound();
 
             StopCoroutine(TurnRoutine());
 
@@ -362,6 +369,7 @@ namespace FortuneWheel
             rewardMultiplier = 1;   //Reset for next rewards
             turnButton.interactable = true; //Now player can turn wheel again
             StartCoroutine(UpdateRewardAmount());
+            _audioGame.PlayClickSound();
         }
 
         private IEnumerator UpdateRewardAmount()

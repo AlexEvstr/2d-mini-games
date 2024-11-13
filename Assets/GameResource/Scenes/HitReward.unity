@@ -604,10 +604,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicSource: {fileID: 526150982}
   _soundsSource: {fileID: 1206530121}
-  _clickSound: {fileID: 0}
-  _spinSound: {fileID: 0}
-  _declineSound: {fileID: 0}
-  _winSound: {fileID: 0}
+  _clickSound: {fileID: 8300000, guid: 52e584332f05a42a1ab6744a4aaaef56, type: 3}
+  _spinSound: {fileID: 8300000, guid: ba67372ab98ca42588e8e6659c0ee9bf, type: 3}
+  _declineSound: {fileID: 8300000, guid: 6507edfa041ae4f6d8c6cdd444b56897, type: 3}
+  _winSound: {fileID: 8300000, guid: d2042c10983b54392bcde18524acf5df, type: 3}
+  _popSound: {fileID: 8300000, guid: 0ac9b8523d7fb425f86cdbc46a3a9880, type: 3}
 --- !u!224 &1014934441 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4255404593806006044, guid: 0edec94ccbba34e608187273066254ce, type: 3}

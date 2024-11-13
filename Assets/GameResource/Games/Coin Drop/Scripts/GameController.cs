@@ -59,6 +59,7 @@ namespace DropGame
         public Text rewardAmount;
         public Text totalGoldText, totalEnergyText, totalGem1Text, totalGem2Text, totalGem3Text, totalGem4Text, totalMoneyText;             // Pop-up text with spet or rewarded coins amount
         public Text dropCostText;
+        private AudioGame _audioGame;
 
         [Header("Effect Settings")]
         [Space]
@@ -107,6 +108,8 @@ namespace DropGame
             coinObject = Instantiate(coinObjectPrefab, Vector3.zero, coinContainer.rotation, coinContainer);
             coinObject.transform.localPosition = coinStartPosition;
             GetPlayerProgress();
+
+            _audioGame = GetComponent<AudioGame>();
         }
 
         private void Start()
@@ -166,6 +169,7 @@ namespace DropGame
             {
                 dropButton.interactable = false;
                 isDrop = true;
+                _audioGame.PlaySpinSound();
 
                 ClaimDropCost();
 
@@ -174,6 +178,7 @@ namespace DropGame
             else
             {
                 Debug.LogWarning("Player does not have enough gold. Here you should open the shop for in app purchase.");
+                _audioGame.PlayDeclineSound();
             }
         }
 
@@ -192,6 +197,7 @@ namespace DropGame
             rewardIcon.sprite = RewardSlots[collectedRewardIndex].icon;
             rewardAmount.text = RewardSlots[collectedRewardIndex].rewardAmount.ToString();
             popupPanel.gameObject.SetActive(true);
+            _audioGame.PlayWinSound();
             //If player clicks "Claim", give that reward Call ClaimReward() function OR if player selects "x2 Button", then show rewarded ad and then give double reward Call DoubleReward() function
         }
 
@@ -256,6 +262,7 @@ namespace DropGame
             }
             rewardMultiplier = 1;   //Reset for next rewards
             confetiEffect.Play();
+            _audioGame.PlayClickSound();
             StartCoroutine(UpdateRewardsAmount());
             ResetGame();
         }

@@ -52,7 +52,8 @@ namespace ClawMachine
         [Space]
         public Transform rewardsContainer;
         public Transform popupPanel, popupParent;
-        public GameObject popupRewardItem;                  //To show user gets which items as reward
+        public GameObject popupRewardItem;
+        private AudioGame _audioGame;
 
         [Header("Rewards spawn positions")]
         [Space]
@@ -100,11 +101,14 @@ namespace ClawMachine
 
         private void Awake()
         {
+            
             if (_ins == null)
                 _ins = this;
 
             pullCostText.text = pullCost.ToString();
             GetPlayerProgress();
+
+            _audioGame = GetComponent<AudioGame>();
         }
 
         private void Start()
@@ -137,10 +141,12 @@ namespace ClawMachine
             {
                 ClaimPullCost();
                 clawController.PullingReward();
+                _audioGame.PlaySpinSound();
             }
             else
             {
                 Debug.LogWarning("Player does not have enough gold. Here you should open the shop for in app purchase.");
+                _audioGame.PlayDeclineSound();
             }
         }
 
@@ -166,6 +172,7 @@ namespace ClawMachine
                 }
             }
             popupPanel.gameObject.SetActive(true);
+            _audioGame.PlayWinSound();
 
             //If player clicks "Claim", give that reward Call ClaimReward() function OR if player selects "x2 Button", then show rewarded ad and then give double reward Call DoubleReward() function
         }
@@ -234,6 +241,7 @@ namespace ClawMachine
             }
 
             confetiEffect.Play();
+            _audioGame.PlayClickSound();
             StartCoroutine(UpdateRewardsAmount());
             ResetGame();
         }

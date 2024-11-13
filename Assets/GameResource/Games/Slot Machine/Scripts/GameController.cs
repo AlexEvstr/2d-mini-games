@@ -274,6 +274,7 @@ namespace SlotMachine
             else
             {
                 Debug.LogWarning("Player does not have enough gold. Here you should open the shop for in app purchase.");
+                _audioGame.PlayDeclineSound();
             }
         }
 
