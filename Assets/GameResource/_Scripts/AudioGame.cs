@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioGame : MonoBehaviour
@@ -26,30 +24,30 @@ public class AudioGame : MonoBehaviour
     public void PlayClickSound()
     {
         _soundsSource.PlayOneShot(_clickSound);
-        _vibrationManager.TriggerSoftVibration();
+        if (_vibration == 1) _vibrationManager.TriggerSoftVibration();
     }
 
     public void PlaySpinSound()
     {
         _soundsSource.PlayOneShot(_spinSound);
-        _vibrationManager.TriggerMediumVibration();
+        if (_vibration == 1) _vibrationManager.TriggerMediumVibration();
     }
 
     public void PlayDeclineSound()
     {
         _soundsSource.PlayOneShot(_declineSound);
-        _vibrationManager.TriggerErrorVibration();
+        if (_vibration == 1) _vibrationManager.TriggerErrorVibration();
     }
 
     public void PlayWinSound()
     {
         _soundsSource.PlayOneShot(_winSound);
-        _vibrationManager.TriggerStrongVibration();
+        if (_vibration == 1) _vibrationManager.TriggerStrongVibration();
     }
 
     public void PlayPopSound()
     {
         _soundsSource.PlayOneShot(_popSound);
-        _vibrationManager.TriggerSoftVibration();
+        if (_vibration == 1) _vibrationManager.TriggerSoftVibration();
     }
 }

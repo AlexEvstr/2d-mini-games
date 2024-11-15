@@ -20,13 +20,10 @@ public class EnergyUI : MonoBehaviour
 
         if (energySystem != null)
         {
-            // Подписываемся на событие обновления энергии
             energySystem.onEnergyUpdated += UpdateEnergyUI;
 
-            // Инициализируем UI сразу после загрузки состояния
             UpdateEnergyUI(energySystem.GetCurrentEnergy(), energySystem.GetRemainingTime());
             _energyTextMenu.text = energySystem.GetCurrentEnergy().ToString();
-            // Останавливаем предыдущую корутину (если была), чтобы избежать сброса
             StopCoroutine(UpdateTimerCoroutine());
             StartCoroutine(UpdateTimerCoroutine());
         }
@@ -39,16 +36,12 @@ public class EnergyUI : MonoBehaviour
         {
             fullEnergyObject.SetActive(true);
             timerText.gameObject.SetActive(false);
-            //energyImage.gameObject.SetActive(false);
         }
         else
         {
             fullEnergyObject.SetActive(false);
-            //energyImage.gameObject.SetActive(true);
             timerText.gameObject.SetActive(true);
             
-
-            // Обновляем UI таймера сразу после загрузки
             TimeSpan timeSpan = TimeSpan.FromSeconds(remainingTime);
             timerText.text = $"{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
         }
@@ -66,7 +59,7 @@ public class EnergyUI : MonoBehaviour
                 timerText.text = $"{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
             }
 
-            yield return new WaitForSeconds(1); // Обновляем таймер каждую секунду
+            yield return new WaitForSeconds(1);
         }
     }
 }

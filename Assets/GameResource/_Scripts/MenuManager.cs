@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        Screen.orientation = ScreenOrientation.Portrait;
         _audioMenu = GetComponent<AudioMenu>();
         initialPosition = _settingsPanel.anchoredPosition;
         _energySystem = GetComponent<EnergySystem>();
@@ -84,7 +85,7 @@ public class MenuManager : MonoBehaviour
 
     private IEnumerator MoveToPosition(Vector2 destination)
     {
-        while (Vector2.Distance(_settingsPanel.anchoredPosition, destination) > 10f)
+        while (Vector2.Distance(_settingsPanel.anchoredPosition, destination) > 100f)
         {
             Vector2 direction = (destination - _settingsPanel.anchoredPosition).normalized;
             _settingsPanel.anchoredPosition += direction * 5000 * Time.deltaTime;

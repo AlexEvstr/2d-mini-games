@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioMenu : MonoBehaviour
@@ -118,18 +116,18 @@ public class AudioMenu : MonoBehaviour
     public void PlayClickSound()
     {
         _soundsSource.PlayOneShot(_clickSound);
-        _vibrationManager.TriggerSoftVibration();
+        if (_vibration == 1) _vibrationManager.TriggerSoftVibration();
     }
 
     public void PlayBuySound()
     {
         _soundsSource.PlayOneShot(_buySound);
-        _vibrationManager.TriggerStrongVibration();
+        if (_vibration == 1) _vibrationManager.TriggerStrongVibration();
     }
 
     public void PlayDeclineSound()
     {
         _soundsSource.PlayOneShot(_declineSound);
-        _vibrationManager.TriggerErrorVibration();
+        if (_vibration == 1) _vibrationManager.TriggerErrorVibration();
     }
 }

@@ -1,12 +1,11 @@
 using UnityEngine;
 using System;
-using TMPro;
 
 public class EnergySystem : MonoBehaviour
 {
     public int maxEnergy = 9;
     private int energyCooldownMinutes = 10;
-    public Action<int, float> onEnergyUpdated;  // Событие для обновления UI
+    public Action<int, float> onEnergyUpdated;
 
     private int currentEnergy;
     private DateTime lastEnergyTime;
@@ -38,7 +37,7 @@ public class EnergySystem : MonoBehaviour
             SaveEnergyState();
         }
 
-        onEnergyUpdated?.Invoke(currentEnergy, timer); // Обновляем UI при инициализации
+        onEnergyUpdated?.Invoke(currentEnergy, timer);
     }
 
     private void UpdateEnergyTimer()
@@ -67,8 +66,6 @@ public class EnergySystem : MonoBehaviour
         if (currentEnergy > 0)
         {
             currentEnergy--;
-            //Debug.Log(currentEnergy);
-            // Устанавливаем таймер только если он не активен
             if (currentEnergy == maxEnergy-1)
             {
                 timer = energyCooldownMinutes * 60;
@@ -79,14 +76,11 @@ public class EnergySystem : MonoBehaviour
         }
     }
 
-
-    // Публичный метод для получения текущей энергии
     public int GetCurrentEnergy()
     {
         return currentEnergy;
     }
 
-    // Публичный метод для получения оставшегося времени
     public float GetRemainingTime()
     {
         return timer;

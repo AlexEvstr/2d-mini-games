@@ -10,6 +10,7 @@ public class GameUIButton : MonoBehaviour
 
     private void Start()
     {
+        Screen.orientation = ScreenOrientation.Portrait;
         _audioGame = GetComponent<AudioGame>();
         _menuBtn.onClick.AddListener(BackToMenuButton);
     }
